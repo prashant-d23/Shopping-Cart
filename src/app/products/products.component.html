@@ -1,0 +1,19 @@
+
+<!-- product cards  -->
+<div class="container">
+  <div class="main" *ngFor="let item of filteredArray | search : searchTerm; let i = index">
+    <div class="card shadow-sm m-2" style="width: 18rem; padding: 10px;">
+      <img [src]="item.image" height="200" width="200" class="card-img-top" alt="productImage">
+      <div class="card-body">
+        <h4 class="fs-5">{{item.price | currency : 'USD'}}</h4>
+        <h5 class="card-title">{{item.title}}</h5>
+        <p class="card-text description" (click)="toggleDescription(i)" [ngClass]="{'expanded' : expandedState[i]}">
+          {{item.description}}</p>
+        </div>
+        <!-- <button class="btn fs-3 cart" (click)="cartCounter(item)"><i class="bi bi-cart-plus-fill"></i></button> -->
+        <i class="bi bi-heart fs-3" *ngIf="!item.like" (click)="cartCounter(item)"></i>
+        <i class="bi bi-heart-fill fs-3 text-danger" *ngIf="item.like" (click)="removeItem(item)"></i>
+        <button class="btn btn-primary" [routerLink]="['/product-details']" [queryParams]="{'id' : item.id}">More Details</button>
+    </div>
+  </div>
+</div>

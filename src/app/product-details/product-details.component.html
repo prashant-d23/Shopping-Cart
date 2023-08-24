@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <button class="btn fs-2" routerLink="/products"><i class="bi bi-arrow-left"></i></button>
+</div>
+<div class="container p-2 border shadow">
+  <div class="row">
+    <div class="col-md-4 p-3" style="overflow-x: auto;">
+      <img src="{{selectedProduct.image}}" alt="img" width="400" height="400" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="container col-md-8 p-3">
+      <h3>{{selectedProduct.title}}</h3>
+      <p>{{selectedProduct.description}}</p>
+      <h5>Rating : {{selectedProduct.rating.rate}} Stars</h5>
+      <h3>{{selectedProduct.price | currency : "USD"}}</h3>
+      <p class="text-success">inclusive of all taxes</p>
+
+      <div class="container">
+        <button type="button" class="btn btn-lg me-3" style="background-color: rgb(255, 66, 180); color: white;">Buy Now</button> <button type="button" class="btn btn-outline-primary btn-lg"><i class="bi bi-heart"></i>
+          WishList</button>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+          <!-- <div class="card">
+            <pre class="card-block card-header" style="margin:15px 0;">Rate: <b>{{rating}}</b> </pre>
+          </div>  -->
+          <!-- <ngb-rating [max]="5" [(rate)]="row.starRating" [readonly]="false"></ngb-rating> -->
+
+<!-- <star-rating [(rating)]="selectedProduct.rating.rate" [totalStars]="5"></star-rating> -->

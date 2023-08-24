@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg shadow-sm mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-4 fw-bold text-white">MyCart</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- categories filter dropdown  -->
+    <select class="form-select" aria-label="Default select example" (change)="filterByCategory($event)">
+      <option value=" ">Categories</option>
+      <option *ngFor="let filter of categories" [value]="filter">{{filter}}</option>
+    </select>
+
+    <!-- I have implemented a dropdown and a slider for price range we can use one of these  -->
+    <!--1. price range filter dropdown -->
+    <select class="form-select" aria-label="Default select example" (change)="filterByPrice($event)">
+      <option value=" ">Price Range</option>
+      <option value="low">Low to High</option>
+      <option value="high">High to Low</option>
+    </select>
+
+    <!-- 2.price range filter Slider  -->
+    <button (click)="toggleSlider()" class="btn btn-primary ms-5">Price Range Slider</button>
+    <div *ngIf="isHidden">
+      <div class="slider border p-3 rounded-3">
+        <label for="customRange1" class="form-label fw-bold">Price Range</label>
+        <p class="fw-bold">{{rangePrice | currency : "USD"}}</p>
+        <input type="range" class="form-range" id="customRange1" min="0" max="999" [(ngModel)]="rangePrice"
+          (change)="filterByPriceRange()">
+        <p class="d-flex justify-content-between">
+          <span class="text-muted">$0</span>
+          <span class="text-muted">$999</span>
+        </p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary position-relative ms-3" routerLink="/cart">
+      <i class="bi bi-cart"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+       {{totalCartItem}}
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </button>
+    <!-- search bar  -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search"
+          [(ngModel)]="searchTerm">
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,61 @@
+.description{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  cursor : pointer;
+}
+
+.expanded{
+  white-space: normal;
+  max-width: none;
+}
+
+.main{
+  margin: 10px;
+}
+
+.card{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border: 1px solid #ccc;
+  transition: transform 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.901);
+}
+
+.card-img-top {
+  width: 100%;
+  object-fit: contain; /* Maintain aspect ratio and cover entire space */
+}
+
+.card:hover{
+  transform: scale(1.05);
+}
+
+.card:last-child{
+  margin-left: 0px;
+}
+
+.card-body {
+  flex-grow: 1; /* Allow card body to expand within the container */
+}
+
+.container{
+display: flex;
+flex-wrap: wrap;
+align-content: space-evenly;
+justify-content: flex-start;
+}
+
+.cart{
+  border: 1px solid black;
+  width: 20%;
+  padding: 0;
+  margin: 0;
+}
+
+.cart:hover{
+  background-color: #ff02dd;
+  color: white;
+}
